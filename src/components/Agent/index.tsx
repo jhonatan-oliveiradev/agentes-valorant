@@ -1,6 +1,7 @@
-import Link from 'next/link'
-import styles from './styles.module.scss'
 import Image from 'next/image'
+import Link from 'next/link'
+
+import styles from './styles.module.scss'
 
 interface AgentProps {
   agent: {
@@ -12,18 +13,18 @@ interface AgentProps {
       displayName: string
       displayIcon: string
     }[]
+    fullPortrait: string
   }
 }
 
 export const Agent = ({ agent }: AgentProps) => {
   return (
     <Link href="#" className={styles.agent}>
-      <div>
+      <div className={styles.text}>
         <p>{agent.role.displayName}</p>
         <strong>{agent.displayName}</strong>
       </div>
-
-      <ul>
+      <ul className={styles.abilities}>
         {agent.abilities.map(ability => (
           <li key={ability.displayName}>
             <Image
@@ -35,6 +36,9 @@ export const Agent = ({ agent }: AgentProps) => {
           </li>
         ))}
       </ul>
+      <div className={styles.background}>
+        <span style={{ backgroundImage: `url('${agent.fullPortrait}')` }} />
+      </div>
     </Link>
   )
 }
