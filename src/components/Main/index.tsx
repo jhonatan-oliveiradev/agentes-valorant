@@ -1,7 +1,8 @@
 import Image from 'next/image'
+
+import { Agents } from 'components/Agents'
+
 import styles from './styles.module.scss'
-import { Agent } from 'components/Agent'
-import { AGENT } from 'utils/agent'
 
 const Main = () => {
   return (
@@ -15,10 +16,7 @@ const Main = () => {
         />
         <h1>AGENTES</h1>
       </div>
-
-      <div className={styles.agents}>
-        <Agent agent={AGENT} />
-      </div>
+      <Agents />
     </main>
   )
 }
